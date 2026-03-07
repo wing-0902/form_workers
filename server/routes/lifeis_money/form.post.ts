@@ -23,7 +23,9 @@ export default defineEventHandler(async (event) => {
     !body?.['cf-turnstile-response'] ||
     typeof body.yourname !== 'string' ||
     typeof body.message !== 'string' ||
-    typeof body['cf-turnstile-response'] !== 'string'
+    typeof body['cf-turnstile-response'] !== 'string' ||
+    body.yourname.length > 50 ||
+    body.message.length > 500
   ) {
     console.error('不正なリクエスト形式');
     throw createError({
@@ -74,34 +76,41 @@ export default defineEventHandler(async (event) => {
     console.log('Turnstile検証は成功');
   }
 
+  if (turnstileResponse.hostname !== 'lifeis.money') {
+    throw createError({ statusCode: 400, statusMessage: 'Invalid Request' });
+  }
+
   // やっとデータベースに保存
   const db = event.context.cloudflare.env.FORM_DATABASE;
 
   const created_at = Math.floor(Date.now() / 1000);
 
-  try {
-    const result = await db
-      .prepare(
-        `INSERT INTO survey_responses (id, username, email, comment, hostname, created_at)
-        VALUES (?, ?, ?, ?, ?, ?)`
-      )
-      .bind(id, body.yourname, body.email, body.message, 'lifeis.money', created_at)
-      .run();
+  const result = await db
+    .prepare(
+      `INSERT INTO survey_responses (id, username, email, comment, hostname, created_at)
+     VALUES (?, ?, ?, ?, ?, ?)`
+    )
+    .bind(id, body.yourname, body.email, body.message, 'lifeis.money', created_at)
+    .run();
 
-    if (!result.success) {
-      throw new Error('D1 Error');
-    }
-
-    return {
-      success: true,
-      id
-    };
-  } catch (error) {
-    console.error('データベースへの書き込みに失敗', error);
-
+  if (!result.success) {
+    console.error('データベースへの書き込みに失敗');
     throw createError({
       statusCode: 500,
       statusMessage: 'Internal Server Error'
     });
   }
+
+  // teapotジョーク
+  if (body.yourname === 'teapot') {
+    throw createError({
+      statusCode: 418,
+      statusMessage: "I'm a teapot, too!"
+    });
+  }
+
+  return {
+    success: true,
+    id
+  };
 });
