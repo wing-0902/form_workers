@@ -13,8 +13,16 @@ export default defineEventHandler(async (event) => {
   if (!body.yourname || !body.message) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Invalid form'
+      statusMessage: 'Invalid form syntax.'
     });
   }
 
+  if (body.email) {
+    if (!emailValidation(body.email)) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Invalid form syntax.'
+      })
+    }
+  }
 });
