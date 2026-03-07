@@ -26,13 +26,13 @@ export default defineNitroConfig({
     '/**': {
       cors: true,
       headers: {
-        'access-control-allow-methods': 'POST,OPTIONS'
+        'Access-Control-Allow-Methods': 'POST,OPTIONS'
       }
     },
     '/lifeis_money/**': {
       headers: {
-        'access-control-allow-origin': 'https://lifels.money',
-        'access-control-allow-methods': 'POST,OPTIONS',
+        'Access-Control-Allow-Origin': 'https://lifeis.money',
+        'Access-Control-Allow-Methods': 'POST,OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization'
       }
     }
