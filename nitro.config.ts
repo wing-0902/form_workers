@@ -25,6 +25,13 @@ export default defineNitroConfig({
       headers: {
         'access-control-allow-methods': 'POST,OPTIONS'
       }
+    },
+    "/lifeis_money/**": {
+      headers: {
+        'access-control-allow-origin': 'https://lifels.money',
+        'access-control-allow-methods': 'POST,OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      }
     }
   }
 });
