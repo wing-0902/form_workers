@@ -22,7 +22,7 @@ export function emailValidation(emailAddress: string) {
     console.log('存在し得ないドメイン');
     return false;
   }
-  
+
   console.log('メールアドレスの形式は有効');
   return true;
 }
