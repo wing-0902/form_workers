@@ -67,7 +67,7 @@ export default defineEventHandler(async (event) => {
 
   await db
     .prepare(
-      `INSERT INTO survey_responses (id, username, email, comment, hostname, creted_at)
+      `INSERT INTO survey_responses (id, username, email, comment, hostname, created_at)
      VALUES (?, ?, ?, ?, ?, ?)`
     )
     .bind(id, body.yourname, body.email, body.message, 'lifeis.money', created_at)
