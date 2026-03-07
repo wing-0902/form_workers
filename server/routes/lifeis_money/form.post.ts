@@ -17,10 +17,13 @@ export default defineEventHandler(async (event) => {
   }>(event);
 
   if (!body.yourname || !body.message || !body['cf-turnstile-response']) {
+    console.error('不正なリクエスト形式');
     throw createError({
       statusCode: 400,
       statusMessage: 'Invalid form syntax.'
     });
+  } else {
+    console.log('リクエスト形式は有効');
   }
 
   const turnstileToken = body['cf-turnstile-response'];
@@ -48,10 +51,13 @@ export default defineEventHandler(async (event) => {
   );
 
   if (!turnstileResponse.success) {
+    console.error('Turnstile検証に失敗');
     throw createError({
       statusCode: 500,
       statusMessage: 'Internal Server Error'
     });
+  } else {
+    console.log('Turnstile検証は成功')
   }
 
   // やっとデータベースに保存
