@@ -20,13 +20,13 @@ export default defineNitroConfig({
   srcDir: 'server',
   imports: false,
   routeRules: {
-    "/**": {
+    '/**': {
       cors: true,
       headers: {
         'access-control-allow-methods': 'POST,OPTIONS'
       }
     },
-    "/lifeis_money/**": {
+    '/lifeis_money/**': {
       headers: {
         'access-control-allow-origin': 'https://lifels.money',
         'access-control-allow-methods': 'POST,OPTIONS',
