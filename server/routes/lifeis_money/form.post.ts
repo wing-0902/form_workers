@@ -57,12 +57,14 @@ export default defineEventHandler(async (event) => {
   // やっとデータベースに保存
   const db = event.context.cloudflare.env.FORM_DATABASE;
 
+  const created_at = Math.floor(Date.now() / 1000);
+
   await db
     .prepare(
-      `INSERT INTO survey_responses (id, username, email, comment)
-     VALUES (?, ?, ?, ?)`
+      `INSERT INTO survey_responses (id, username, email, comment, hostname, creted_at)
+     VALUES (?, ?, ?, ?, ?, ?)`
     )
-    .bind(id, body.yourname, body.email, body.message)
+    .bind(id, body.yourname, body.email, body.message, 'lifeis.money', created_at)
     .run();
 
   return {
