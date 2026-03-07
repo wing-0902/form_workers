@@ -18,5 +18,13 @@ export default defineNitroConfig({
     }
   },
   srcDir: 'server',
-  imports: false
+  imports: false,
+  routeRules: {
+    "/**": {
+      cors: true,
+      headers: {
+        'access-control-allow-methods': 'POST,OPTIONS'
+      }
+    }
+  }
 });
