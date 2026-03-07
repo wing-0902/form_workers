@@ -1,6 +1,10 @@
 {
   "name": "nitro-app",
   "private": true,
+  "type": "module",
+  "imports": {
+    "#utils/*": "./server/utils/*.ts"
+  },
   "scripts": {
     "build": "nitro build",
     "dev": "nitro dev",
