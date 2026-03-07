@@ -1,5 +1,7 @@
 import { createError, defineEventHandler, readBody } from 'h3';
 
+import { emailValidation } from '#utils/validateEmail';
+
 export default defineEventHandler(async (event) => {
   const body = await readBody<{
     yourname: string;
@@ -14,4 +16,5 @@ export default defineEventHandler(async (event) => {
       statusMessage: 'Invalid form'
     });
   }
+
 });
