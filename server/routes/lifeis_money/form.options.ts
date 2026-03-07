@@ -1,5 +1,3 @@
-import { defineEventHandler, setHeader } from "h3"
+import { defineEventHandler, setHeader } from 'h3';
 
-export default defineEventHandler((event) => {
-
-})
+export default defineEventHandler((event) => {});
