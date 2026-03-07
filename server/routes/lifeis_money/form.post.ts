@@ -1,7 +1,17 @@
-import { eventHandler, readBody } from 'h3';
+import { createError, defineEventHandler, readBody } from 'h3';
 
-export default eventHandler(async (event) => {
-  const body = await readBody(event);
+export default defineEventHandler(async (event) => {
+  const body = await readBody<{
+    yourname: string;
+    email?: string;
+    message: string;
+    'cf-turnstile-response'?: string;
+  }>(event);
 
-  console.log("受信データ", body);
+  if (!body.yourname || !body.message) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Invalid form'
+    });
+  }
 });
