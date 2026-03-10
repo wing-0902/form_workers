@@ -9,6 +9,7 @@ export default defineNitroConfig({
     deployConfig: true,
     nodeCompat: true,
     wrangler: {
+      name: 'form-workers-for-applications',
       d1_databases: [
         {
           binding: 'FORM_DATABASE',
@@ -18,8 +19,7 @@ export default defineNitroConfig({
       ],
       routes: [
         {
-          pattern: 'https://formapis.wave.graphics/api/*',
-          name: 'form-workers-for-applications'
+          pattern: 'formapis.wave.graphics/api/*',
         }
       ]
     }
