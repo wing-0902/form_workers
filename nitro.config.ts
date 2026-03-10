@@ -4,7 +4,7 @@ import { defineNitroConfig } from 'nitropack/config';
 export default defineNitroConfig({
   baseURL: '/api',
   compatibilityDate: '2026-03-07',
-  preset: 'cloudflare_modules',
+  preset: 'cloudflare_module',
   cloudflare: {
     deployConfig: true,
     nodeCompat: true,
