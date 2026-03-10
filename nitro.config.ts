@@ -4,7 +4,7 @@ import { defineNitroConfig } from 'nitropack/config';
 export default defineNitroConfig({
   baseURL: '/api',
   compatibilityDate: '2026-03-07',
-  preset: 'cloudflare_pages',
+  preset: 'cloudflare_modules',
   cloudflare: {
     deployConfig: true,
     nodeCompat: true,
@@ -17,6 +17,12 @@ export default defineNitroConfig({
           database_id: 'b9fe5a8e-22ac-4974-b416-ad9c5a9abc9e'
         }
       ],
+      routes: [
+        {
+          "pattern": "formapis.wave.graphics/formapis/*",
+          "zone_name": "wave.graphics"
+        }
+      ]
     }
   },
   runtimeConfig: {
