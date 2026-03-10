@@ -18,9 +18,7 @@ export default defineNitroConfig({
         }
       ],
       routes: [
-        {
-          pattern: 'formapis.wave.graphics/api/*',
-        }
+        'formapis.wave.graphics/api/*',
       ]
     }
   },
