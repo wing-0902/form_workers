@@ -2,7 +2,6 @@ import { defineNitroConfig } from 'nitropack/config';
 
 // https://nitro.build/config
 export default defineNitroConfig({
-  baseURL: '/api',
   compatibilityDate: '2026-03-07',
   preset: 'cloudflare_module',
   cloudflare: {
