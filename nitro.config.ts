@@ -17,9 +17,6 @@ export default defineNitroConfig({
           database_id: 'b9fe5a8e-22ac-4974-b416-ad9c5a9abc9e'
         }
       ],
-      routes: [
-        'formapis.wave.graphics/api/*',
-      ]
     }
   },
   runtimeConfig: {
