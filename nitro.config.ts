@@ -29,7 +29,7 @@ export default defineNitroConfig({
   },
   srcDir: 'server',
   imports: false,
-  apiBaseUrl: 'formapis/',
+  apiBaseURL: '/formapis',
   routeRules: {
     '/**': {
       cors: true,
