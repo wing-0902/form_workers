@@ -31,17 +31,18 @@ export default defineNitroConfig({
   imports: false,
   apiBaseURL: '/formapis',
   routeRules: {
-    '/**': {
-      cors: true,
-      headers: {
-        'Access-Control-Allow-Methods': 'POST,OPTIONS'
-      }
-    },
-    '/lifeis_money/**': {
+    '/formapis/lifeis_money/**': {
       headers: {
         'Access-Control-Allow-Origin': 'https://lifeis.money',
         'Access-Control-Allow-Methods': 'POST,OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        'Access-Control-Allow-Headers': 'Content-Type'
+      }
+    },
+    '/formapis/wing_diary/**': {
+      headers: {
+        'Access-Control-Allow-Origin': 'https://diary.wing.osaka',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
+        'Access-Control-Allow-Headers': 'Content-Type'
       }
     }
   }
