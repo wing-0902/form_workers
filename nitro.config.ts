@@ -25,7 +25,8 @@ export default defineNitroConfig({
     }
   },
   runtimeConfig: {
-    lifeismoneyTurnstileToken: ''
+    lifeismoneyTurnstileToken: '',
+    wingTurnstileToken: ''
   },
   srcDir: 'server',
   imports: false,
@@ -41,7 +42,7 @@ export default defineNitroConfig({
     '/formapis/wing_diary/**': {
       headers: {
         'Access-Control-Allow-Origin': 'https://diary.wing.osaka',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type'
       }
     }
