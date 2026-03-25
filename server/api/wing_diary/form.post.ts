@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
 
   // Turnstile検証パラメータ
   const turnstileVerifyParams = new URLSearchParams({
-    secret: config.wingTurnstileToken,
+    secret: config.wingTurnstileSecret,
     response: turnstileToken,
     idempotency_key: id
   });
@@ -76,7 +76,7 @@ export default defineEventHandler(async (event) => {
     console.log('Turnstile検証は成功');
   }
 
-  if (turnstileResponse.hostname !== 'lifeis.money') {
+  if (turnstileResponse.hostname !== 'diary.wing.osaka') {
     throw createError({ statusCode: 400, statusMessage: 'Invalid Request' });
   }
 

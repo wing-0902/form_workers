@@ -26,7 +26,7 @@ export default defineNitroConfig({
   },
   runtimeConfig: {
     lifeismoneyTurnstileToken: '',
-    wingTurnstileToken: ''
+    wingTurnstileSecret: ''
   },
   srcDir: 'server',
   imports: false,
